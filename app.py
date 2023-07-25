@@ -27,3 +27,5 @@ def add_user():
         cur.execute("INSERT INTO users (Name,Age,City,Street,Number,Email) values (?,?,?,?,?,?)", (Name, Age, City, Street, Number, Email))
         con.commit()
         flash("Data registered", "success")
+        return redirect(url_for('index'))
+    return render_template("add_user.html")
