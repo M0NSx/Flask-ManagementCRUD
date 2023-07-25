@@ -20,3 +20,4 @@ def add_user():
         Age = request.form("Age")
         City = request.form("City")
         Street = request.form("Street")
+        Number = request.form("Number")
