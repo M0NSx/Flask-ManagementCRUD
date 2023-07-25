@@ -9,3 +9,9 @@ sql = """CREATE TABLE "users" (
     "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
     "Name" TEXT,
     "Age" Text,
+    "Street" Text,
+    "City" Text,
+    "Number" Text,
+    "Email" Text
+
+)"""
