@@ -18,3 +18,4 @@ def add_user():
     if request.method == "POST":
         Name = request.form["Name"]
         Age = request.form("Age")
+        City = request.form("City")
