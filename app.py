@@ -41,3 +41,26 @@ def edit_user(id):
         Email = request.form("Email")
         con = sql.connect('database.db')
         cur = con.cursor()
+        cur.execute("UPDATE user SET Name=?, Age=?, City=?, Street=?, Number=?, Email=? WHERE ID=?", (Name, Age, City, Street, Number, Email, id))
+        con.commit()
+        flash("Data updated", "success")
+        return redirect(url_for('index'))
+    con = sql.connect('database.db')
+    con.row_factory = sql.Row
+    cur = con.cursor()
+    cur.execute('select * from users where ID=?', (id,))
+    data = cur.fetchone()
+    return render_template('edit_user.html', datas=data)
+
+@app.route("/delete_user/<string:id>", methods=["GET"])
+def delete_user(id):
+    con = sql.connect('database.db')
+    cur = con.cursor()
+    cur.execute('delete from users where ID=?', (id,))
+    con.commit()
+    flash("Data deleted", "success")
+    return redirect(url_for('index'))
+
+if __name__ == "__main__":
+    app.secret_key = "admin123"
+    app.run(debug=True)
