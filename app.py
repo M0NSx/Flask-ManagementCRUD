@@ -34,3 +34,4 @@ def add_user():
 def edit_user(id):
     if request.method == "POST":
         Name = request.form["Name"]
+        Age = request.form("Age")
