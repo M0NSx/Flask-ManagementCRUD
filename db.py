@@ -17,3 +17,5 @@ sql = """CREATE TABLE "users" (
 )"""
 
 cur.execute(sql)
+con.commit()
+con.close()
