@@ -24,3 +24,6 @@ def add_user():
         Email = request.form("Email")
         con = sql.connect('database.db')
         cur = con.cursor()
+        cur.execute("INSERT INTO users (Name,Age,City,Street,Number,Email) values (?,?,?,?,?,?)", (Name, Age, City, Street, Number, Email))
+        con.commit()
+        flash("Data registered", "success")
