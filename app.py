@@ -16,3 +16,4 @@ def index():
 @app.route("/add_user", methods= ["POST", "GET"])
 def add_user():
     if request.method == "POST":
+        Name = request.form["Name"]
