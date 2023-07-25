@@ -39,3 +39,4 @@ def edit_user(id):
         Street = request.form("Street")
         Number = request.form("Number")
         Email = request.form("Email")
+        con = sql.connect('database.db')
