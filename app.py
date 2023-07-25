@@ -40,3 +40,4 @@ def edit_user(id):
         Number = request.form("Number")
         Email = request.form("Email")
         con = sql.connect('database.db')
+        cur = con.cursor()
