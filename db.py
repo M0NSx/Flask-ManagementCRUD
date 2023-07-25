@@ -15,3 +15,5 @@ sql = """CREATE TABLE "users" (
     "Email" Text
 
 )"""
+
+cur.execute(sql)
