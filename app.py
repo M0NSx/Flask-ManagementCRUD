@@ -38,3 +38,4 @@ def edit_user(id):
         City = request.form("City")
         Street = request.form("Street")
         Number = request.form("Number")
+        Email = request.form("Email")
