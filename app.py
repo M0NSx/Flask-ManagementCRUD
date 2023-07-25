@@ -29,3 +29,7 @@ def add_user():
         flash("Data registered", "success")
         return redirect(url_for('index'))
     return render_template("add_user.html")
+
+@app.route("/edit_user/<string:id>", methods= ["POST", "GET"])
+def edit_user(id):
+    if request.method == "POST":
