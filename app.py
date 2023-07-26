@@ -17,11 +17,11 @@ def index():
 def add_user():
     if request.method == "POST":
         Name = request.form["Name"]
-        Age = request.form("Age")
-        City = request.form("City")
-        Street = request.form("Street")
-        Number = request.form("Number")
-        Email = request.form("Email")
+        Age = request.form["Age"]
+        City = request.form["City"]
+        Street = request.form["Street"]
+        Number = request.form["Number"]
+        Email = request.form["Email"]
         con = sql.connect('database.db')
         cur = con.cursor()
         cur.execute("INSERT INTO users (Name,Age,City,Street,Number,Email) values (?,?,?,?,?,?)", (Name, Age, City, Street, Number, Email))
@@ -34,14 +34,14 @@ def add_user():
 def edit_user(id):
     if request.method == "POST":
         Name = request.form["Name"]
-        Age = request.form("Age")
-        City = request.form("City")
-        Street = request.form("Street")
-        Number = request.form("Number")
-        Email = request.form("Email")
+        Age = request.form["Age"]
+        City = request.form["City"]
+        Street = request.form["Street"]
+        Number = request.form["Number"]
+        Email = request.form["Email"]
         con = sql.connect('database.db')
         cur = con.cursor()
-        cur.execute("UPDATE user SET Name=?, Age=?, City=?, Street=?, Number=?, Email=? WHERE ID=?", (Name, Age, City, Street, Number, Email, id))
+        cur.execute("UPDATE users SET Name=?, Age=?, City=?, Street=?, Number=?, Email=? WHERE ID=?", (Name, Age, City, Street, Number, Email, id))
         con.commit()
         flash("Data updated", "success")
         return redirect(url_for('index'))
