@@ -13,3 +13,4 @@ sql = """CREATE TABLE "giveaways"(
     "Entries" Text,
     "Max winners" Text,
     "Initial Date" Text,
+    "Duration" Text
