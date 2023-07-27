@@ -23,3 +23,30 @@ def add_giveaway():
         Max_winners = request.form["Max_winners"]
         Initial_date = request.form["Initial_date"]
         Duration = request.form["Duration"]
+
+        con = sql.connect('database2.db')
+        cur = con.cursor()
+        cur.execute('INSERT INTO giveaways (GiveAway Name=?, Type=?, Reward=?, Entries=?, Max winners=?, Initial Date=?, Duration=?) values (?,?,?,?,?,?,?)', (GiveAway_Name, Type, Reward, Entries, Max_winners, Initial_date, Duration))
+        con.commit()
+        flash('GiveAway added', 'success')
+        return redirect(url_for('index.html'))
+    return render_template('add_giveaway.html')
+
+app.route('/edit_giveaway/<string:id>', methods=["POST", "GET"])
+def edit_giveaway(id):
+    if request.method == "POST":
+        GiveAway_Name = request.form["GiveAway Name"]
+        Type = request.form["Type"]
+        Reward = request.form["Reward"]
+        Entries = request.form["Entries"]
+        Max_winners = request.form["Max_winners"]
+        Initial_date = request.form["Initial_date"]
+        Duration = request.form["Duration"]
+
+        con = sql.connect('database2.db')
+        cur = con.cursor()
+        cur.execute('UPDATE giveaways SET GiveAway Name=?, Type=?, Reward=?, Entries=?, Max winners=?, Initial Date=?, Duration=? where id=?', (GiveAway_Name, Type, Reward, Entries, Max_winners, Initial_date, Duration, id))
+        con.commit()
+        flash('GiveAway updated', 'success')
+        return redirect(url_for('index.html'))
+    return render_template('edit_giveaway.html')
