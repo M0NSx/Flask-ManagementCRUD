@@ -5,3 +5,5 @@ cur = con.cursor()
 cur.execute("DROP TABLE IF EXISTS giveaways")
 
 sql = """CREATE TABLE "giveaways"(
+
+    "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
