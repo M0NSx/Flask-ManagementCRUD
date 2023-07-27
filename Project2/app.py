@@ -12,3 +12,5 @@ def index():
     cur.execute("select * from giveaways")
     data = cur.fetchall()
     return render_template('index.html', datas=data)
+
+app.route('/add_giveaway', methods=["POST", "GET"])
