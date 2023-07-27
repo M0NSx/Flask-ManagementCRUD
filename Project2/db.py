@@ -14,3 +14,9 @@ sql = """CREATE TABLE "giveaways"(
     "Max winners" Text,
     "Initial Date" Text,
     "Duration" Text
+
+)"""
+
+cur.execute(sql)
+con.commit()
+con.close()
