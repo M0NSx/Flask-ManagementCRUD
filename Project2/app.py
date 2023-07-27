@@ -7,3 +7,4 @@ app.route('/')
 app.route('/index')
 def index():
     con = sql.connect('database2.db')
+    con.row_factory = sql.Row
