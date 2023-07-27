@@ -20,3 +20,4 @@ def add_giveaway():
         Type = request.form["Type"]
         Reward = request.form["Reward"]
         Entries = request.form["Entries"]
+        Max_winners = request.form["Max_winners"]
