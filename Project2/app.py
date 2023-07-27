@@ -50,3 +50,16 @@ def edit_giveaway(id):
         flash('GiveAway updated', 'success')
         return redirect(url_for('index.html'))
     return render_template('edit_giveaway.html')
+
+app.route('/delete_giveaway/<string:id>', methods=["GET"])
+def delete_giveaway(id):
+    con = sql.connect('database2.db')
+    cur = con.cursor()
+    cur.execute('DELETE FROM giveaways where id=?', (id))
+    con.commit()
+    flash('GiveAway deleted', 'success')
+    return redirect(url_for('index.html'))
+
+if __name__ == "__main__":
+    app.secret_key = "admin123"
+    app.run(debug=True)
