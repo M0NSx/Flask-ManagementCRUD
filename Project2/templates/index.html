@@ -18,3 +18,16 @@
         {% for row in datas %}
       <tr>
         <td>{{loop.index}}</td>
+        <td>{{row.giveaway_name}}</td>
+        <td>{{row.type}}</td>
+        <td>{{row.reward}}</td>
+        <td>{{row.max_winers}}</td>
+        <td>{{row.initial_date}}</td>
+        <td>{{row.duration}}</td>
+        <td><a href="#" class="btn btn-primary">Edit</a></td>
+        <td><a href="#" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
