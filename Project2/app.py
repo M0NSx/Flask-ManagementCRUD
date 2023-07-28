@@ -3,8 +3,8 @@ import sqlite3 as sql
 
 app = Flask(__name__)
 
-app.route('/')
-app.route('/index')
+@app.route('/')
+@app.route('/index')
 def index():
     con = sql.connect('database2.db')
     con.row_factory = sql.Row
@@ -13,7 +13,7 @@ def index():
     data = cur.fetchall()
     return render_template('index.html', datas=data)
 
-app.route('/add_giveaway', methods=["POST", "GET"])
+@app.route('/add_giveaway', methods=["POST", "GET"])
 def add_giveaway():
     if request.method == "POST":
         GiveAway_Name = request.form["GiveAway Name"]
@@ -32,7 +32,7 @@ def add_giveaway():
         return redirect(url_for('index.html'))
     return render_template('add_giveaway.html')
 
-app.route('/edit_giveaway/<string:id>', methods=["POST", "GET"])
+@app.route('/edit_giveaway/<string:id>', methods=["POST", "GET"])
 def edit_giveaway(id):
     if request.method == "POST":
         GiveAway_Name = request.form["GiveAway Name"]
@@ -51,7 +51,7 @@ def edit_giveaway(id):
         return redirect(url_for('index.html'))
     return render_template('edit_giveaway.html')
 
-app.route('/delete_giveaway/<string:id>', methods=["GET"])
+@app.route('/delete_giveaway/<string:id>', methods=["GET"])
 def delete_giveaway(id):
     con = sql.connect('database2.db')
     cur = con.cursor()
