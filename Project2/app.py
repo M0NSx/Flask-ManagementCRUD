@@ -16,49 +16,49 @@ def index():
 @app.route('/add_giveaway', methods=["POST", "GET"])
 def add_giveaway():
     if request.method == "POST":
-        GiveAway_Name = request.form["GiveAway Name"]
+        GiveAwayName = request.form["GiveAwayName"]
         Type = request.form["Type"]
         Reward = request.form["Reward"]
         Entries = request.form["Entries"]
-        Max_winners = request.form["Max_winners"]
-        Initial_date = request.form["Initial_date"]
+        MaxWinners = request.form["MaxWinners"]
+        InitialDate = request.form["InitialDate"]
         Duration = request.form["Duration"]
 
         con = sql.connect('database2.db')
         cur = con.cursor()
-        cur.execute('INSERT INTO giveaways (GiveAway Name=?, Type=?, Reward=?, Entries=?, Max winners=?, Initial Date=?, Duration=?) values (?,?,?,?,?,?,?)', (GiveAway_Name, Type, Reward, Entries, Max_winners, Initial_date, Duration))
+        cur.execute('INSERT INTO giveaways (GiveAway Name, Type, Reward, Entries, Max winners, Initial Date, Duration) values (?,?,?,?,?,?,?)', (GiveAwayName, Type, Reward, Entries, MaxWinners, InitialDate, Duration))
         con.commit()
         flash('GiveAway added', 'success')
-        return redirect(url_for('index.html'))
+        return redirect(url_for('index'))
     return render_template('add_giveaway.html')
 
 @app.route('/edit_giveaway/<string:id>', methods=["POST", "GET"])
 def edit_giveaway(id):
     if request.method == "POST":
-        GiveAway_Name = request.form["GiveAway Name"]
+        GiveAwayName = request.form["GiveAwayName"]
         Type = request.form["Type"]
         Reward = request.form["Reward"]
         Entries = request.form["Entries"]
-        Max_winners = request.form["Max_winners"]
-        Initial_date = request.form["Initial_date"]
+        MaxWinners = request.form["MaxWinners"]
+        InitialDate = request.form["InitialDate"]
         Duration = request.form["Duration"]
 
         con = sql.connect('database2.db')
         cur = con.cursor()
-        cur.execute('UPDATE giveaways SET GiveAway Name=?, Type=?, Reward=?, Entries=?, Max winners=?, Initial Date=?, Duration=? where id=?', (GiveAway_Name, Type, Reward, Entries, Max_winners, Initial_date, Duration, id))
+        cur.execute('UPDATE giveaways SET GiveAwayName=?, Type=?, Reward=?, Entries=?, MaxWinners=?, InitialDate=?, Duration=? where id=?', (GiveAwayName, Type, Reward, Entries, MaxWinners, InitialDate, Duration, id))
         con.commit()
         flash('GiveAway updated', 'success')
-        return redirect(url_for('index.html'))
+        return redirect(url_for('index'))
     return render_template('edit_giveaway.html')
 
 @app.route('/delete_giveaway/<string:id>', methods=["GET"])
 def delete_giveaway(id):
     con = sql.connect('database2.db')
     cur = con.cursor()
-    cur.execute('DELETE FROM giveaways where id=?', (id))
+    cur.execute('DELETE FROM giveaways where id=?', (id,))
     con.commit()
     flash('GiveAway deleted', 'success')
-    return redirect(url_for('index.html'))
+    return redirect(url_for('index'))
 
 if __name__ == "__main__":
     app.secret_key = "admin123"
