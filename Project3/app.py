@@ -16,3 +16,17 @@ def index():
 @app.route('/add_product', methods=["POST", "GET"])
 def add_product():
     if request.method == "POST":
+
+        ProductName = request.form["ProductName"]
+        Type = request.form["Type"]
+        Brand = request.form["Brand"]
+        Price = request.form["Price"]
+        MadeIn = request.form["MadeIn"]
+
+        con = sql.connect('database3.db')
+        cur = con.cursor()
+        cur.execute('INSERT INTO products (ProductName, Type, Brand, Price, MadeIn) values (?,?,?,?,?)', (ProductName, Type, Brand, Price, MadeIn))
+        cur.commit()
+        flash("Product added", "success")
+        return redirect(url_for('index'))
+    return render_template('add_product.html')
