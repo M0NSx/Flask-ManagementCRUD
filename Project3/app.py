@@ -12,3 +12,7 @@ def index():
     cur.execute('select * from products')
     data = cur.fetchall()
     return render_template('index.html', datas=data)
+
+@app.route('/add_product', methods=["POST", "GET"])
+def add_product():
+    if request.method == "POST":
