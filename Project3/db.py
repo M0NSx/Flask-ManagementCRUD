@@ -13,3 +13,8 @@ sql = """CREATE TABLE "products" (
     "Price" Text,
     "MadeIn" Text
 
+)"""
+
+cur.execute(sql)
+con.commit()
+con.close()
