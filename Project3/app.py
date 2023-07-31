@@ -42,3 +42,4 @@ def edit_product(id):
         MadeIn = request.form["MadeIn"]
 
         con = sql.connect('database3.db')
+        cur = con.cursor()
