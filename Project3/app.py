@@ -46,3 +46,4 @@ def edit_product(id):
         cur.execute('UPDATE products SET ProductName=?, Type=?, Brand=?, Price=?, MadeIn=?, where ID=?', (ProductName, Type, Brand, Price, MadeIn, id))
         cur.commit()
         flash("Product updated", "success")
+        return redirect(url_for('index'))
