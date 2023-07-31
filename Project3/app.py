@@ -58,3 +58,11 @@ def edit_product(id):
 def delete_product(id):
     con = sql.connect('database3.db')
     cur = con.cursor()
+    cur.execute('DELETE * from products where ID=?', (id,))
+    cur.commit()
+    flash("Product deleted", "success")
+    return redirect(url_for('index'))
+
+if __name__ == "__main__":
+    app.secret_key = "admin123"
+    app.run(debug=True)
