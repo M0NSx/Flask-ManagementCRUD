@@ -33,3 +33,4 @@ def add_product():
 
 @app.route('/edit_product/<string:id>', methods=["POST", "GET"])
 def edit_product(id):
+    if request.method == "POST":
