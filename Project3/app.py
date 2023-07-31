@@ -32,3 +32,4 @@ def add_product():
     return render_template('add_product.html')
 
 @app.route('/edit_product/<string:id>', methods=["POST", "GET"])
+def edit_product(id):
