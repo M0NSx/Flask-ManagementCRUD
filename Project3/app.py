@@ -57,3 +57,4 @@ def edit_product(id):
 @app.route('/delete_product/<string:id>', methods=["GET"])
 def delete_product(id):
     con = sql.connect('database3.db')
+    cur = con.cursor()
