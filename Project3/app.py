@@ -36,3 +36,4 @@ def edit_product(id):
     if request.method == "POST":
 
         ProductName = request.form["ProductName"]
+        Type = request.form["Type"]
