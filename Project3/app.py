@@ -50,3 +50,4 @@ def edit_product(id):
     con = sql.connect('database3.db')
     con.row_factory = sql.Row
     cur = con.cursor()
+    cur.execute('select * from products where ID=?', (id,))
