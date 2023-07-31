@@ -43,3 +43,4 @@ def edit_product(id):
 
         con = sql.connect('database3.db')
         cur = con.cursor()
+        cur.execute('UPDATE products SET ProductName=?, Type=?, Brand=?, Price=?, MadeIn=?, where ID=?', (ProductName, Type, Brand, Price, MadeIn, id))
