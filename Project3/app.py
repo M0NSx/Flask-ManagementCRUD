@@ -53,3 +53,5 @@ def edit_product(id):
     cur.execute('select * from products where ID=?', (id,))
     data = cur.fetchone()
     return render_template('edit_product.html', datas=data)
+
+@app.route('/delete_product/<string:id>', methods=["GET"])
