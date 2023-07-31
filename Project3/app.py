@@ -49,3 +49,4 @@ def edit_product(id):
         return redirect(url_for('index'))
     con = sql.connect('database3.db')
     con.row_factory = sql.Row
+    cur = con.cursor()
