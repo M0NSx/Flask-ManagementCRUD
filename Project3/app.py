@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/index')
 def index():
     con = sql.connect('database3.db')
-    sql.row_factory = sql.Row
+    con.row_factory = sql.Row
     cur = con.cursor()
     cur.execute('select * from products')
     data = cur.fetchall()
@@ -26,7 +26,7 @@ def add_product():
         con = sql.connect('database3.db')
         cur = con.cursor()
         cur.execute('INSERT INTO products (ProductName, Type, Brand, Price, MadeIn) values (?,?,?,?,?)', (ProductName, Type, Brand, Price, MadeIn))
-        cur.commit()
+        con.commit()
         flash("Product added", "success")
         return redirect(url_for('index'))
     return render_template('add_product.html')
@@ -43,8 +43,8 @@ def edit_product(id):
 
         con = sql.connect('database3.db')
         cur = con.cursor()
-        cur.execute('UPDATE products SET ProductName=?, Type=?, Brand=?, Price=?, MadeIn=?, where ID=?', (ProductName, Type, Brand, Price, MadeIn, id))
-        cur.commit()
+        cur.execute('UPDATE products SET ProductName=?, Type=?, Brand=?, Price=?, MadeIn=? where ID=?', (ProductName, Type, Brand, Price, MadeIn, id))
+        con.commit()
         flash("Product updated", "success")
         return redirect(url_for('index'))
     con = sql.connect('database3.db')
@@ -58,8 +58,8 @@ def edit_product(id):
 def delete_product(id):
     con = sql.connect('database3.db')
     cur = con.cursor()
-    cur.execute('DELETE * from products where ID=?', (id,))
-    cur.commit()
+    cur.execute('DELETE from products where ID=?', (id,))
+    con.commit()
     flash("Product deleted", "success")
     return redirect(url_for('index'))
 
