@@ -26,3 +26,6 @@
         <td><a href="{{url_for('delete_product', id=row.ID)}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
       </tr>
       {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
