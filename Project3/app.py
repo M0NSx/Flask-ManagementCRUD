@@ -1,4 +1,3 @@
-
 from flask import Flask, redirect, request, render_template, flash, url_for
 import sqlite3 as sql
 
